@@ -1,0 +1,12 @@
+<form id="loanForm">
+  <input type="text" name="borrower" placeholder="Contoh: Andi" required />
+  <input type="text" name="item" placeholder="Contoh: Laptop" required />
+  <input type="number" name="quantity" min="1" value="1" required />
+  <select name="status">
+    <option value="Dipinjam">Dipinjam</option>
+    <option value="Dikembalikan">Dikembalikan</option>
+  </select>
+  <input type="date" name="borrowDate" required />
+  <input type="date" name="returnDate" required />
+  <button type="submit">Tambah Pinjaman</button>
+</form>

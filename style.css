@@ -1,0 +1,460 @@
+/* Variabel warna dan bayangan agar gaya aplikasi mudah disesuaikan. */
+:root {
+  --bg: #edf1f7;
+  --surface: #ffffff;
+  --surface-2: #f6f8fc;
+  --line: #e6ebf5;
+  --text: #1d2433;
+  --muted: #687385;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --green: #22c55e;
+  --green-soft: #dff9eb;
+  --yellow: #f59e0b;
+  --yellow-soft: #fff3d6;
+  --red: #ef4444;
+  --red-soft: #ffe4e6;
+  --shadow: 0 16px 40px rgba(76, 85, 116, 0.12);
+}
+
+/* Menghitung ukuran elemen termasuk padding dan border. */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e9eef8 0%, #f1f5fb 100%);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Kerangka utama aplikasi: menu samping dan konten. */
+.app-shell {
+  max-width: 1280px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 780px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+/* Gaya untuk identitas aplikasi dan navigasi samping. */
+.sidebar {
+  background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+  color: white;
+  padding: 28px 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom:50px;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.brand-label {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* Hanya panel dengan class active yang ditampilkan. */
+.tab-panels {
+  position: relative;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* Kartu daftar barang dan informasi stok. */
+.inventory-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.inventory-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.inventory-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.inventory-item span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.inventory-stock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  background: rgba(79, 70, 229, 0.08);
+  border-radius: 12px;
+  padding: 10px 8px;
+  color: var(--primary-dark);
+}
+
+.inventory-stock strong {
+  font-size: 1.4rem;
+}
+
+.inventory-stock small {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.report-table-wrap {
+  overflow-x: auto;
+}
+
+/* Header halaman dan area konten utama. */
+.main-panel {
+  padding: 28px 30px 30px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  letter-spacing: -0.06em;
+}
+
+.primary-btn,
+.submit-btn,
+.delete-btn {
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-btn:hover,
+.submit-btn:hover,
+.delete-btn:hover {
+  transform: translateY(-1px);
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  color: white;
+  padding: 12px 18px;
+}
+
+/* Kartu ringkasan jumlah peminjaman, barang, dan pengembalian. */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 18px rgba(80, 97, 132, 0.05);
+}
+
+.stat-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+}
+
+.stat-card strong {
+  font-size: clamp(1.8rem, 2vw, 2.2rem);
+}
+
+.stat-card.purple {
+  background: linear-gradient(135deg, #f1ebff, #ffffff);
+}
+
+.stat-card.green {
+  background: linear-gradient(135deg, #eafdf1, #ffffff);
+}
+
+.stat-card.yellow {
+  background: linear-gradient(135deg, #fff6df, #ffffff);
+}
+
+/* Tata letak formulir dan tabel data peminjaman. */
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.form-card,
+.table-card {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 18px rgba(80, 97, 132, 0.05);
+}
+
+.form-card h3,
+.table-head h3 {
+  margin: 0 0 18px;
+  font-size: 1.35rem;
+}
+
+/* Gaya untuk input formulir dan tombol kirim. */
+.field-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.two-col {
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  margin-bottom: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+input, select {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text);
+}
+
+input:focus, select:focus {
+  outline: 2px solid rgba(79, 70, 229, 0.18);
+  border-color: rgba(79, 70, 229, 0.4);
+}
+
+.submit-btn {
+  margin-top: 8px;
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary), #6366f1);
+  color: white;
+  padding: 13px 18px;
+}
+
+/* Gaya tabel, badge, dan status transaksi. */
+.table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+
+th {
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.status {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.status.active {
+  background: var(--yellow-soft);
+  color: #9a6400;
+}
+
+.status.done {
+  background: var(--green-soft);
+  color: #18794e;
+}
+
+.delete-btn {
+  background: var(--red-soft);
+  color: var(--red);
+  padding: 8px 12px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 26px 12px;
+  font-weight: 600;
+}
+
+/* Pada layar sedang, menu dan konten ditata agar lebih lebar. */
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    margin: 20px;
+  }
+
+  .sidebar {
+    padding-bottom: 16px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pada ponsel, kolom menjadi satu dan tombol memenuhi lebar. */
+@media (max-width: 560px) {
+  .main-panel {
+    padding: 20px 16px 24px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats-grid,
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+}
